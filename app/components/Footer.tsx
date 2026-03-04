@@ -11,33 +11,6 @@ function Footer() {
           <p>&copy;Thomas You 2026. All rights reserved.</p>
         </div>
 
-        <div className='grid grid-cols-2 max-w-md  sm:max-w-md'>
-          <div>
-            <nav>
-              <p className='font-semibold'>Quick Links</p>
-              <ul>
-                <li>
-                  <Link href={'/'}>Home</Link>
-                </li>
-                <li>
-                  <Link href={'/blog'}>Blog</Link>
-                </li>
-              </ul>
-            </nav>
-          </div>
-
-          <div>
-            <p className='font-semibold'>Resources</p>
-            <ul>
-              <li>
-                <Link href={'https://vsco.co'}>VSCO</Link>
-              </li>
-              <li>
-                <Link href={'https://vsco.co/dylanrotich/gallery'}>My VSCO Gallery</Link>
-              </li>
-            </ul>
-          </div>
-        </div>
       </div>
     </footer>
   );
