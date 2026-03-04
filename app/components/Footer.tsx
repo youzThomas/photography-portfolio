@@ -6,9 +6,9 @@ function Footer() {
       <div className='space-y-5 flex flex-col sm:items-center md:flex-row max-w-xl mx-auto lg:space-x-8'>
         <div className='md:mr-auto'>
           <p className='text-base font-ovo font-semibold'>
-            Dylan Rotich Photography
+            Thomas You Photography
           </p>
-          <p>&copy;Dylan Rotich 2023. All rights reserved.</p>
+          <p>&copy;Thomas You 2026. All rights reserved.</p>
         </div>
 
         <div className='grid grid-cols-2 max-w-md  sm:max-w-md'>

@@ -15,7 +15,7 @@ function NavBar() {
       <div className='py-5 px-4 lg:px-8 flex justify-between'>
         <div>
           <p className='hover:text-gray-500 transition duration-300 hover:scale-105'>
-            <Link href='/'>Dylan Rotich</Link>
+            <Link href='/'>Halcyon</Link>
           </p>
         </div>
 
@@ -25,7 +25,10 @@ function NavBar() {
               <Link href={'/works'}>Works</Link>
             </li>
             <li className='hover:text-gray-500 hover:scale-105 transition duration-300'>
-              <Link href={'/blog'}>Blog</Link>
+              <Link href={'/blog'}>Album</Link>
+            </li>
+            <li className='hover:text-gray-500 hover:scale-105 transition duration-300'>
+              <Link href={'/about'}>About</Link>
             </li>
           </ul>
         </div>
@@ -82,7 +85,14 @@ function NavBar() {
             onClick={toggleMenu}
             className='focus:text-gray-500 transition duration-300'
           >
-            <Link href={'/blog'}>Blog</Link>
+            <Link href={'/blog'}>Album</Link>
+          </button>
+
+          <button
+            onClick={toggleMenu}
+            className='focus:text-gray-500 transition duration-300'
+          >
+            <Link href={'/about'}>About</Link>
           </button>
 
         </div>
