@@ -27,9 +27,6 @@ function NavBar() {
             <li className='hover:text-gray-500 hover:scale-105 transition duration-300'>
               <Link href={'/blog'}>Blog</Link>
             </li>
-            <li className='hover:text-gray-500 hover:scale-105 transition duration-300'>
-              <Link href={'/presets'}>Presets</Link>
-            </li>
           </ul>
         </div>
 
@@ -88,9 +85,6 @@ function NavBar() {
             <Link href={'/blog'}>Blog</Link>
           </button>
 
-          <button className='focus:text-gray-500 transition duration-300'>
-            <Link href={'/presets'}>Presets</Link>
-          </button>
         </div>
       )}
       <div className=' h-px border-b xl:mx-8'></div>
