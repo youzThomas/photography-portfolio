@@ -11,6 +11,8 @@ import photo10 from '../public/images/pic10.jpg';
 import photo11 from '../public/images/pic11.jpg';
 import photo12 from '../public/images/pic12.jpg';
 import photo13 from '../public/images/pic13.jpg';
+import photo14 from '../public/images/pic14.jpg';
+import photo15 from '../public/images/pic15.jpg';
 
 export default [
   photo1,
@@ -18,12 +20,12 @@ export default [
   photo13,
   photo4,
   photo5,
-  photo6,
   photo7,
-  photo8,
-  photo9,
-  photo10,
+  photo6,
+  photo14,
   photo11,
-  photo12,
+  photo8,
   photo3,
+  photo10,
+  photo12,
 ];
