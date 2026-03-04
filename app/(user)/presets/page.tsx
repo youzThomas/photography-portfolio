@@ -1,7 +1,7 @@
 'use client';
 import getStripe from '../../../utils/get-stripejs';
 import PresetCard from '../../components/PresetCard';
-import vol1 from '../../../public/images/vol1.jpg';
+import vol1 from '../../../public/images/pic1.jpg';
 
 getStripe();
 

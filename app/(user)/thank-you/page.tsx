@@ -1,6 +1,6 @@
 'use client';
 import React from 'react';
-import vol1 from '../../../public/images/vol1.jpg';
+import vol1 from '../../../public/images/pic1.jpg';
 import PresetCard from '../../components/PresetCard';
 
 function ThankYouPage() {
