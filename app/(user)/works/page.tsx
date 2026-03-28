@@ -6,11 +6,11 @@ const query = groq`
   *[_type == "imageCollection"]
   | order(
       select(
-        title == "Urban" => 4,
-        title == "Nature" => 3,
+        title == "Urban" => 0,
+        title == "Nature" => 1,
         title == "Lifestyle" => 2,
-        title == "Shot on iPhone" => 1,
-        title == "Sport" => 0,
+        title == "Shot on iPhone" => 3,
+        title == "Sport" => 4,
         999
       ) asc
     )
