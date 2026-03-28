@@ -6,11 +6,9 @@ type Props = {
 };
 
 function MasonryGallery({ collections }: Props) {
-
-  const reversed = collections.reverse();
   return (
     <>
-      {reversed.map((collection) => (
+      {collections.map((collection) => (
         <div className=' w-full mb-24'>
           <div className='flex flex-col md:flex-row md:justify-between md:items-end mb-2'>
             <p className='font-ovo text-3xl md:text-4xl'>{collection.title}</p>

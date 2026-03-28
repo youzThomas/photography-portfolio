@@ -1,10 +1,19 @@
 import { client } from '../../../lib/sanity.client';
 import { groq } from 'next-sanity';
 import MasonryGallery from '../../components/MasonryGallery';
-import urlFor from '../../../lib/urlFor';
 
 const query = groq`
   *[_type == "imageCollection"]
+  | order(
+      select(
+        title == "Urban" => 4,
+        title == "Nature" => 3,
+        title == "Lifestyle" => 2,
+        title == "Shot on iPhone" => 1,
+        title == "Sport" => 0,
+        999
+      ) asc
+    )
 `;
 
 export default async function Works() {
