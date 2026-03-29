@@ -33,7 +33,7 @@ function MasonryGallery({ collections }: Props) {
             </p>
           </div>
           <motion.div
-            className='grid grid-cols-2 gap-2 sm:gap-3 md:grid-cols-3 md:gap-4 xl:grid-cols-4'
+            className='grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4'
             variants={containerVariants}
             initial='hidden'
             animate='show'
