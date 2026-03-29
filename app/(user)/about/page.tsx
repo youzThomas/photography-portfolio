@@ -60,6 +60,7 @@ export default function AboutPage() {
                 src={headshot}
                 alt='Portrait placeholder'
                 className='w-full h-auto object-cover'
+                sizes='(max-width: 768px) 100vw, 520px'
                 priority
               />
             </motion.div>

@@ -33,7 +33,7 @@ function MasonryGallery({ collections }: Props) {
             </p>
           </div>
           <motion.div
-            className=' columns-1 space-y-4 sm:columns-2 md:columns-3 xl:columns-4'
+            className='grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4'
             variants={containerVariants}
             initial='hidden'
             animate='show'
@@ -41,9 +41,11 @@ function MasonryGallery({ collections }: Props) {
             {collection.images.map((image: ImageObject) => {
               return (
                 <motion.div
-                  className={`relative h-full  ${
-                    image.isLandscape ? 'col-span-2' : 'col-span-1'
-                  } mt-0`}
+                  className={`relative overflow-hidden ${
+                    image.isLandscape
+                      ? 'aspect-[4/3] sm:col-span-2'
+                      : 'aspect-[3/4] col-span-1'
+                  }`}
                   key={image.alt}
                   variants={itemVariants}
                 >
@@ -53,6 +55,11 @@ function MasonryGallery({ collections }: Props) {
                     alt={image.alt}
                     width={400}
                     height={500}
+                    sizes={
+                      image.isLandscape
+                        ? '(max-width: 640px) 100vw, (max-width: 768px) 100vw, (max-width: 1280px) 66vw, 50vw'
+                        : '(max-width: 640px) 100vw, (max-width: 768px) 50vw, (max-width: 1280px) 33vw, 25vw'
+                    }
                   />
                 </motion.div>
               );
