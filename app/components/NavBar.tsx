@@ -25,9 +25,6 @@ function NavBar() {
               <Link href={'/works'}>Works</Link>
             </li>
             <li className='hover:text-gray-500 hover:scale-105 transition duration-300'>
-              <Link href={'/blog'}>Album</Link>
-            </li>
-            <li className='hover:text-gray-500 hover:scale-105 transition duration-300'>
               <Link href={'/about'}>About</Link>
             </li>
           </ul>
@@ -79,13 +76,6 @@ function NavBar() {
             className=' focus:text-gray-500 transition duration-300'
           >
             <Link href={'/works'}>Works</Link>
-          </button>
-
-          <button
-            onClick={toggleMenu}
-            className='focus:text-gray-500 transition duration-300'
-          >
-            <Link href={'/blog'}>Album</Link>
           </button>
 
           <button
