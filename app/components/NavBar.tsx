@@ -6,6 +6,8 @@ import { AnimatePresence, motion } from 'framer-motion';
 
 function NavBar() {
   const [isOpen, setIsOpen] = useState<boolean>(false);
+  const appleEaseOut: [number, number, number, number] = [0.22, 1, 0.36, 1];
+  const appleEaseInOut: [number, number, number, number] = [0.4, 0, 0.2, 1];
 
   function toggleMenu() {
     setIsOpen(!isOpen);
@@ -35,7 +37,7 @@ function NavBar() {
           onClick={toggleMenu}
           className='md:hidden flex justify-center items-center'
           animate={{ rotate: isOpen ? 90 : 0 }}
-          transition={{ duration: 0.2, ease: 'easeOut' }}
+          transition={{ type: 'spring', stiffness: 280, damping: 24, mass: 0.7 }}
         >
           {!isOpen ? (
             <svg
@@ -77,9 +79,18 @@ function NavBar() {
           <motion.div
             className='absolute z-10 bg-white flex flex-col items-center space-y-4 py-4 border-y mb-5 w-full md:hidden origin-top'
             initial={{ opacity: 0, y: -10, scaleY: 0.97 }}
-            animate={{ opacity: 1, y: 0, scaleY: 1 }}
-            exit={{ opacity: 0, y: -8, scaleY: 0.97 }}
-            transition={{ duration: 0.22, ease: 'easeOut' }}
+            animate={{
+              opacity: 1,
+              y: 0,
+              scaleY: 1,
+              transition: { duration: 0.55, ease: appleEaseOut },
+            }}
+            exit={{
+              opacity: 0,
+              y: -8,
+              scaleY: 0.97,
+              transition: { duration: 0.42, ease: appleEaseInOut },
+            }}
           >
             <button
               onClick={toggleMenu}
