@@ -20,7 +20,7 @@ function Carousel() {
   return (
     <div className='mt-8'>
       <motion.div
-        className='columns-1 sm:columns-2 lg:columns-3 gap-2'
+        className='columns-2 sm:columns-2 lg:columns-3 gap-2'
         variants={containerVariants}
         initial='hidden'
         animate='show'
@@ -35,7 +35,7 @@ function Carousel() {
               className='w-full h-auto'
               src={image}
               alt='photography example'
-              sizes='(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw'
+              sizes='(max-width: 640px) 50vw, (max-width: 1024px) 50vw, 33vw'
             />
           </motion.div>
         ))}
