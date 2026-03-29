@@ -24,7 +24,7 @@ export default function AboutPage() {
         <h1 className='font-ovo text-5xl mb-12 md:mb-16'>About Me</h1>
 
         <div className='grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-14 items-start'>
-          <div className='font-ovo font-light text-[18px] leading-8 text-gray-700 space-y-6'>
+          <div className='order-2 md:order-1 font-ovo font-light text-[18px] leading-8 text-gray-700 space-y-6'>
             <p>
               Thomas You (Halcyon) is a photographer based between Chapel
               Hill, NC and Guangzhou, China.
@@ -50,7 +50,7 @@ export default function AboutPage() {
           </div>
 
           <motion.div
-            className='md:justify-self-end w-full max-w-[520px]'
+            className='order-1 md:order-2 md:justify-self-end w-full max-w-[520px]'
             variants={containerVariants}
             initial='hidden'
             animate='show'
