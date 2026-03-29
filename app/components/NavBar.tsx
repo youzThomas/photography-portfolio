@@ -2,6 +2,7 @@
 'use client';
 import { useState } from 'react';
 import Link from 'next/link';
+import { AnimatePresence, motion } from 'framer-motion';
 
 function NavBar() {
   const [isOpen, setIsOpen] = useState<boolean>(false);
@@ -30,9 +31,11 @@ function NavBar() {
           </ul>
         </div>
 
-        <button
+        <motion.button
           onClick={toggleMenu}
           className='md:hidden flex justify-center items-center'
+          animate={{ rotate: isOpen ? 90 : 0 }}
+          transition={{ duration: 0.2, ease: 'easeOut' }}
         >
           {!isOpen ? (
             <svg
@@ -65,28 +68,35 @@ function NavBar() {
               />
             </svg>
           )}
-        </button>
+        </motion.button>
       </div>
 
       {/* Mobile Menu ↓ */}
-      {isOpen && (
-        <div className='absolute z-10 bg-white flex flex-col items-center space-y-4 py-4 border-y mb-5 w-full md:hidden'>
-          <button
-            onClick={toggleMenu}
-            className=' focus:text-gray-500 transition duration-300'
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            className='absolute z-10 bg-white flex flex-col items-center space-y-4 py-4 border-y mb-5 w-full md:hidden origin-top'
+            initial={{ opacity: 0, y: -10, scaleY: 0.97 }}
+            animate={{ opacity: 1, y: 0, scaleY: 1 }}
+            exit={{ opacity: 0, y: -8, scaleY: 0.97 }}
+            transition={{ duration: 0.22, ease: 'easeOut' }}
           >
-            <Link href={'/works'}>Works</Link>
-          </button>
+            <button
+              onClick={toggleMenu}
+              className=' focus:text-gray-500 transition duration-300'
+            >
+              <Link href={'/works'}>Works</Link>
+            </button>
 
-          <button
-            onClick={toggleMenu}
-            className='focus:text-gray-500 transition duration-300'
-          >
-            <Link href={'/about'}>About</Link>
-          </button>
-
-        </div>
-      )}
+            <button
+              onClick={toggleMenu}
+              className='focus:text-gray-500 transition duration-300'
+            >
+              <Link href={'/about'}>About</Link>
+            </button>
+          </motion.div>
+        )}
+      </AnimatePresence>
       <div className=' h-px border-b xl:mx-8'></div>
     </nav>
   );
