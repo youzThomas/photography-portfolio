@@ -19,12 +19,12 @@ export default function AboutPage() {
   };
 
   return (
-    <div className='px-4 lg:px-8 pb-20'>
-      <div className='mx-auto max-w-5xl pt-16 md:pt-24'>
-        <h1 className='font-ovo text-5xl mb-12 md:mb-16'>About Me</h1>
+    <div className='content-page pb-10'>
+      <div className='mx-auto max-w-5xl'>
+        <h1 className='page-heading'>About Me</h1>
 
         <div className='grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-14 items-start'>
-          <div className='order-2 md:order-1 font-ovo font-light text-[18px] leading-8 text-gray-700 space-y-6'>
+          <div className='order-2 md:order-1 text-[16px] leading-8 muted space-y-6'>
             <p>
               Thomas You (Halcyon) is a photographer based between Chapel
               Hill, NC and Guangzhou, China.
@@ -41,7 +41,7 @@ export default function AboutPage() {
               <br />
               Contact:{' '}
               <a
-                className='underline underline-offset-2 hover:text-black transition-colors'
+                className='underline underline-offset-2 hover:text-[var(--foreground)] transition-colors'
                 href='mailto:halcyonyau@outlook.it'
               >
                 halcyonyau@outlook.it
@@ -50,18 +50,19 @@ export default function AboutPage() {
           </div>
 
           <motion.div
-            className='order-1 md:order-2 md:justify-self-end w-full max-w-[520px]'
+            className='order-1 md:order-2 md:justify-self-end w-full max-w-[520px] photo-reveal'
             variants={containerVariants}
-            initial='hidden'
+            initial={false}
             animate='show'
           >
-            <motion.div variants={itemVariants}>
+            <motion.div className='photo-reveal' variants={itemVariants}>
               <Image
                 src={headshot}
-                alt='Portrait placeholder'
+                alt='Portrait of Thomas You'
                 className='w-full h-auto object-cover'
                 sizes='(max-width: 768px) 100vw, 520px'
                 priority
+                unoptimized
               />
             </motion.div>
           </motion.div>

@@ -1,36 +1,19 @@
-# Photography Portfolio - Dylan Rotich
+# Halcyon — Thomas You Photography
 
-## Description
+A photography portfolio featuring landscape, lifestyle, and sport work by Thomas You, based between Chapel Hill and Guangzhou.
 
-I built this project to showcase my artwork as a photographer and further my skills as a Front End Web Developer.
-- I needed a portfolio website w/ blog to showcase my work as a photographer (long standing hobby)
-- I used NextJS, TailwindCSS, TypeScript, and Sanity CMS to challenge myself to practice known concepts while still learning new frameworks and libraries.
-- I learned how to create Sanity Schemas, implement Groq queries, integrate Stripe checkouts, debug Type errors, and use TailwindCSS to implement mobile first development.
-- Demonstrates ability to create portfolio website for clients
+## Development
 
-## Usage
-Visit [Dylan Rotich | Photography Portfolio](https://dylanrotich-photography.vercel.app) to view photo collections and read the Blog.
+Install dependencies with `npm ci`, then run `npm run dev`. Use `npm run build` for a production build and `npm start` to serve it.
 
-## Features
-- Sliding Image Carousel
-- Sanity Backend
-- Blog
-- Mobile First Responsive Design
-- Stripe Payment Integration for Donations
+The Works page uses Sanity image collections. Configure `NEXT_PUBLIC_SANITY_PROJECT_ID`, `NEXT_PUBLIC_SANITY_DATASET`, and the existing `NEXT_PUBLIC_SANTIY_API_VERSION` environment variable in `.env.local`. Manage collections at `/studio`.
 
-## Technology
-![NodeJS](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white)
-![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
-![Vercel](https://img.shields.io/badge/NextJS-%23000000.svg?style=for-the-badge&logo=vercel&logoColor=white)
-![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white)
-![Sanity](https://img.shields.io/badge/Sanity-F54A2A?style=for-the-badge)
-![TailwindCSS](https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white)
-![Stripe](https://img.shields.io/badge/Stripe-9347FF?style=for-the-badge)
-![Framer](https://img.shields.io/badge/Framer-black?style=for-the-badge&logo=framer&logoColor=blue)
+## Design
 
+Home, Works, and About share a responsive left navigation, locally served Instrument Serif, Geist, and JetBrains Mono fonts, and a minimal footer. Light mode is the default; the bottom-right theme button remembers the visitor's preference. Studio retains its own appearance.
+
+Home photographs are ordered in `lib/images.ts`. Existing remote CMS documents are not deleted by the removal of the legacy blog and shop.
 
 ## License
-MIT License
 
-Copyright (c) 2023 Dylan Rotich
-see LICENSE for more information
+The original code is distributed under the MIT license; its attribution is preserved in `LICENSE`. Local font license notices are in `public/fonts`. Photographs and portfolio content belong to Thomas You.

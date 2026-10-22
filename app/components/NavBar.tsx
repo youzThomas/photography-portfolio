@@ -1,116 +1,23 @@
-//Works, Blog, Contact
 'use client';
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
-import { AnimatePresence, motion } from 'framer-motion';
+import { usePathname } from 'next/navigation';
 
-function NavBar() {
-  const [isOpen, setIsOpen] = useState<boolean>(false);
-  const appleEaseOut: [number, number, number, number] = [0.22, 1, 0.36, 1];
-  const appleEaseInOut: [number, number, number, number] = [0.4, 0, 0.2, 1];
-
-  function toggleMenu() {
-    setIsOpen(!isOpen);
-  }
-
-  return (
-    <nav className='text-2xl font-ovo'>
-      <div className='py-5 px-4 lg:px-8 flex justify-between'>
-        <div>
-          <p className='hover:text-gray-500 transition duration-300 hover:scale-105'>
-            <Link href='/'>Halcyon</Link>
-          </p>
-        </div>
-
-        <div className='hidden md:block'>
-          <ul className='flex space-x-8'>
-            <li className='hover:text-gray-500 hover:scale-105 transition duration-300'>
-              <Link href={'/works'}>Works</Link>
-            </li>
-            <li className='hover:text-gray-500 hover:scale-105 transition duration-300'>
-              <Link href={'/about'}>About</Link>
-            </li>
-          </ul>
-        </div>
-
-        <motion.button
-          onClick={toggleMenu}
-          className='md:hidden flex justify-center items-center'
-          animate={{ rotate: isOpen ? 90 : 0 }}
-          transition={{ type: 'spring', stiffness: 280, damping: 24, mass: 0.7 }}
-        >
-          {!isOpen ? (
-            <svg
-              xmlns='http://www.w3.org/2000/svg'
-              fill='none'
-              viewBox='0 0 24 24'
-              strokeWidth='1.5'
-              stroke='currentColor'
-              className='w-8 h-8'
-            >
-              <path
-                strokeLinecap='round'
-                strokeLinejoin='round'
-                d='M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5'
-              />
-            </svg>
-          ) : (
-            <svg
-              xmlns='http://www.w3.org/2000/svg'
-              fill='none'
-              viewBox='0 0 24 24'
-              strokeWidth='1.5'
-              stroke='currentColor'
-              className='w-8 h-8'
-            >
-              <path
-                strokeLinecap='round'
-                strokeLinejoin='round'
-                d='M6 18L18 6M6 6l12 12'
-              />
-            </svg>
-          )}
-        </motion.button>
-      </div>
-
-      {/* Mobile Menu ↓ */}
-      <AnimatePresence>
-        {isOpen && (
-          <motion.div
-            className='absolute z-10 bg-white flex flex-col items-center space-y-4 py-4 border-y mb-5 w-full md:hidden origin-top'
-            initial={{ opacity: 0, y: -10, scaleY: 0.97 }}
-            animate={{
-              opacity: 1,
-              y: 0,
-              scaleY: 1,
-              transition: { duration: 0.55, ease: appleEaseOut },
-            }}
-            exit={{
-              opacity: 0,
-              y: -8,
-              scaleY: 0.97,
-              transition: { duration: 0.42, ease: appleEaseInOut },
-            }}
-          >
-            <button
-              onClick={toggleMenu}
-              className=' focus:text-gray-500 transition duration-300'
-            >
-              <Link href={'/works'}>Works</Link>
-            </button>
-
-            <button
-              onClick={toggleMenu}
-              className='focus:text-gray-500 transition duration-300'
-            >
-              <Link href={'/about'}>About</Link>
-            </button>
-          </motion.div>
-        )}
-      </AnimatePresence>
-      <div className=' h-px border-b xl:mx-8'></div>
-    </nav>
-  );
+const links = [{ href: '/', label: 'Home' }, { href: '/works', label: 'Works' }, { href: '/about', label: 'About' }];
+export default function NavBar() {
+  const [open, setOpen] = useState(false);
+  const pathname = usePathname();
+  const button = useRef<HTMLButtonElement>(null);
+  useEffect(() => setOpen(false), [pathname]);
+  return <nav className="site-nav" aria-label="Main navigation" onKeyDown={event => {
+    if (event.key === 'Escape' && open) { setOpen(false); button.current?.focus(); }
+  }}>
+    <Link className="site-brand" href="/" onClick={() => setOpen(false)}>Thomas You</Link>
+    <button ref={button} className="menu-toggle" aria-expanded={open} aria-controls="navigation-links" aria-label={open ? 'Close menu' : 'Open menu'} onClick={() => setOpen(!open)}>
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.25" aria-hidden="true"><path d={open ? 'M6 6l12 12M6 18L18 6' : 'M4 8h16M4 16h16'}/></svg>
+    </button>
+    <ul id="navigation-links" className={`nav-links ${open ? 'is-open' : ''}`}>
+      {links.map(({href, label}) => <li key={href}><Link href={href} aria-current={pathname === href ? 'page' : undefined} onClick={() => setOpen(false)}>{label}</Link></li>)}
+    </ul>
+  </nav>;
 }
-
-export default NavBar;

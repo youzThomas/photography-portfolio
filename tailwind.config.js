@@ -8,8 +8,8 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        ovo: ['var(--font-ovo)'],
-        quattro: ['var(--font-quattro)'],
+        ovo: ['Instrument Serif', 'Georgia', 'serif'],
+        quattro: ['Geist', 'Arial', 'sans-serif'],
       },
     },
   },

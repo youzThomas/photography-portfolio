@@ -18,13 +18,11 @@ const query = groq`
 
 export default async function Works() {
   const collections = await client.fetch(query);
-  console.log(collections);
   return (
-    <div className='px-4 lg:px-8'>
-      <h1 className='font-ovo text-5xl mb-8 mt-5'>Works</h1>
-      <div className='border-b rounded w-2/6 mx-auto my-8'></div>
+    <div className='content-page'>
+      <h1 className='page-heading'>Works</h1>
 
-      <MasonryGallery collections={collections} />
+      {collections.length ? <MasonryGallery collections={collections} /> : <p className='muted'>New collections are on their way.</p>}
     </div>
   );
 }

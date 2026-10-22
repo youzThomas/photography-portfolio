@@ -17,28 +17,44 @@ function Carousel() {
     show: { opacity: 1, y: 0, transition: { duration: 0.75 } },
   };
 
+  const renderPhoto = (image: StaticImageData, index: number) => (
+    <motion.div
+      className='photo-reveal'
+      key={image.src}
+      variants={itemVariants}
+    >
+      <Image
+        className='w-full h-auto'
+        src={image}
+        alt={`Photograph by Thomas You — ${index + 1}`}
+        sizes='(max-width: 767px) calc((100vw - 52px) / 2), (max-width: 1023px) calc((100vw - 260px) / 2), (max-width: 1696px) calc((100vw - 328px) / 3), 456px'
+        priority={index < 2}
+        unoptimized
+      />
+    </motion.div>
+  );
+
   return (
-    <div className='mt-8'>
+    <div className='w-full'>
       <motion.div
-        className='columns-2 sm:columns-2 lg:columns-3 gap-2'
+        className='home-masonry home-masonry-two photo-reveal'
         variants={containerVariants}
-        initial='hidden'
+        initial={false}
         animate='show'
       >
-        {images.map((image: StaticImageData, index: number) => (
-          <motion.div
-            className='mb-2 break-inside-avoid'
-            key={index}
-            variants={itemVariants}
-          >
-            <Image
-              className='w-full h-auto'
-              src={image}
-              alt='photography example'
-              sizes='(max-width: 640px) 50vw, (max-width: 1024px) 50vw, 33vw'
-            />
-          </motion.div>
-        ))}
+        <div className='home-masonry-column'>{images.slice(0, 6).map((image, index) => renderPhoto(image, index))}</div>
+        <div className='home-masonry-column'>{images.slice(6).map((image, index) => renderPhoto(image, index + 6))}</div>
+      </motion.div>
+
+      <motion.div
+        className='home-masonry home-masonry-three photo-reveal'
+        variants={containerVariants}
+        initial={false}
+        animate='show'
+      >
+        <div className='home-masonry-column'>{images.slice(0, 4).map((image, index) => renderPhoto(image, index))}</div>
+        <div className='home-masonry-column'>{images.slice(4, 8).map((image, index) => renderPhoto(image, index + 4))}</div>
+        <div className='home-masonry-column'>{images.slice(8).map((image, index) => renderPhoto(image, index + 8))}</div>
       </motion.div>
     </div>
   );
