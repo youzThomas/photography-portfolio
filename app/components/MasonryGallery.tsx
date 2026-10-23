@@ -33,7 +33,7 @@ function MasonryGallery({ collections }: Props) {
             </p>
           </div>
           <motion.div
-            className='columns-2 gap-3 lg:columns-3 lg:gap-4 xl:columns-4 photo-reveal'
+            className='works-masonry photo-reveal'
             variants={containerVariants}
             initial={false}
             animate='show'
@@ -41,21 +41,21 @@ function MasonryGallery({ collections }: Props) {
             {collection.images.map((image: ImageObject, index: number) => {
               const dimensions = image.image.asset._ref.match(/-(\d+)x(\d+)-/);
               return (
-                <motion.div
-                  className='relative mb-3 lg:mb-4 break-inside-avoid photo-reveal'
+                <div
+                  className='works-photo'
                   key={image._key || `${image.image.asset._ref}-${index}`}
-                  variants={itemVariants}
                 >
-                  <Image
-                    className='h-auto w-full'
-                    src={`${urlFor(image.image).url()}${image.isLandscape ? '?w=1920' : '?w=1080'}`}
-                    alt={image.alt}
-                    width={dimensions ? Number(dimensions[1]) : 400}
-                    height={dimensions ? Number(dimensions[2]) : 500}
-                    sizes='(max-width: 767px) calc((100vw - 52px) / 2), (max-width: 1023px) calc((100vw - 260px) / 2), (max-width: 1279px) calc((100vw - 328px) / 3), calc((100vw - 344px) / 4)'
-                    unoptimized
-                  />
-                </motion.div>
+                  <motion.div className='photo-reveal' variants={itemVariants}>
+                    <Image
+                      src={`${urlFor(image.image).url()}${image.isLandscape ? '?w=1920' : '?w=1080'}`}
+                      alt={image.alt}
+                      width={dimensions ? Number(dimensions[1]) : 400}
+                      height={dimensions ? Number(dimensions[2]) : 500}
+                      sizes='(max-width: 767px) calc((100vw - 52px) / 2), (max-width: 1023px) calc((100vw - 260px) / 2), (max-width: 1279px) calc((100vw - 328px) / 3), calc((100vw - 344px) / 4)'
+                      unoptimized
+                    />
+                  </motion.div>
+                </div>
               );
             })}
           </motion.div>
