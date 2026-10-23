@@ -6,7 +6,7 @@ import PageTransition from '../components/PageTransition';
 
 export const metadata = {
   title: 'Halcyon | Thomas You Photography',
-  icons: { icon: '/favicon-32x32.png' },
+  icons: { icon: [{ url: '/favicon.svg', type: 'image/svg+xml' }] },
   description: 'Landscape, lifestyle, and sport photography by Thomas You (Halcyon), based between Chapel Hill and Guangzhou.',
 };
 
